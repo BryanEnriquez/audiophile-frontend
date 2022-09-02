@@ -1,0 +1,9 @@
+@import '../../styles/variables.module';
+
+.main {
+  padding-top: $navbar-height;
+
+  @media (min-width: $media-l) {
+    padding-top: $navbar-height-l;
+  }
+}

@@ -1,0 +1,118 @@
+@import '../../styles/variables.module';
+
+.hero {
+  position: relative;
+  background-color: #191919;
+  overflow: hidden;
+
+  &__imgBox {
+    position: relative;
+    max-width: 375px;
+    min-height: 510px;
+    margin: 0 auto;
+    z-index: 1;
+
+    @media (min-width: $media-m) {
+      max-width: 768px;
+      min-height: 639px;
+    }
+
+    @media (min-width: $media-l) {
+      max-width: 1440px;
+      min-height: 632px;
+    }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__textBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 37.6rem;
+    z-index: 10;
+    transform: translate(-50%, calc(-50% - 2px));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: $media-m) {
+      // max-width: 39.6rem;
+      max-width: 40rem;
+      transform: translate(-50%, calc(-50% - 20px));
+    }
+
+    @media (min-width: $media-l) {
+      width: calc(100vw - 80px);
+      max-width: $max-width-l;
+      transform: translate(-50%, calc(-50% - 15px));
+      align-items: flex-start;
+    }
+
+    span {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+      letter-spacing: 10px;
+      text-align: center;
+      color: #ffffff;
+      opacity: 0.5;
+    }
+
+    h1 {
+      margin: 16px 0 24px 0;
+      font-size: 3.6rem;
+      font-weight: 700;
+      line-height: 4rem;
+      text-transform: uppercase;
+      letter-spacing: 1.285px;
+      color: #ffffff;
+      text-align: center;
+
+      @media (min-width: $media-m) {
+        margin: 24px 0;
+        font-size: 5.6rem;
+        line-height: 5.8rem;
+        letter-spacing: 2px;
+      }
+
+      @media (min-width: $media-l) {
+        max-width: 39.6rem;
+        text-align: left;
+      }
+    }
+
+    p {
+      margin-bottom: 28px;
+      max-width: 32.8rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2.5rem;
+      color: #ffffff;
+      text-align: center;
+      opacity: 0.75;
+
+      @media (min-width: $media-m) {
+        margin-bottom: 40px;
+        max-width: 34.9rem;
+      }
+
+      @media (min-width: $media-l) {
+        text-align: left;
+      }
+    }
+
+    & > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

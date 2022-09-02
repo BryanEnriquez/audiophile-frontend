@@ -1,0 +1,44 @@
+@import '../../styles/variables.module';
+
+.socials {
+  display: flex;
+  flex-direction: row;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-of-type) {
+      margin-right: 16px;
+    }
+  }
+
+  a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    svg path {
+      transition: fill 0.2s;
+    }
+
+    @media (min-width: $media-l) {
+      &:hover svg path {
+        fill: $color-orange-2;
+      }
+    }
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    right: -1000px;
+    bottom: -100px;
+  }
+
+  svg {
+    display: block;
+    width: 2.4rem;
+  }
+}

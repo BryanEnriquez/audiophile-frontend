@@ -1,0 +1,131 @@
+@import '../../styles/variables.module';
+
+.footer {
+  padding: 0 24px 38px 24px;
+  background-color: #101010;
+
+  @media (min-width: $media-m) {
+    padding: 0 40px 46px 40px;
+  }
+
+  @media (min-width: $media-l) {
+    padding-bottom: 48px;
+  }
+
+  &__highlight {
+    position: relative;
+    height: 52px;
+
+    @media (min-width: $media-m) {
+      height: 60px;
+    }
+
+    @media (min-width: $media-l) {
+      height: 75px;
+    }
+
+    &::before {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      content: '';
+      width: 101px;
+      height: 4px;
+      transform: translateX(-50%);
+      background-color: $color-orange-2;
+
+      @media (min-width: $media-m) {
+        left: 0;
+        transform: none;
+      }
+    }
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 48px 0;
+    justify-items: center;
+
+    @media (min-width: $media-m) {
+      gap: 32px;
+      justify-items: left;
+    }
+
+    @media (min-width: $media-l) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto;
+      align-items: center;
+      justify-items: end;
+      gap: 0 10px;
+    }
+  }
+
+  &__copy {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 48px 0;
+
+    @media (min-width: $media-m) {
+      margin-top: 32px;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      gap: 80px 10px;
+    }
+
+    @media (min-width: $media-l) {
+      margin-top: 36px;
+      grid-template-columns: 1fr auto;
+      gap: 56px 10px;
+    }
+
+    & > p {
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+      text-align: center;
+      color: #ffffff;
+      opacity: 0.5;
+
+      @media (min-width: $media-m) {
+        text-align: left;
+      }
+    }
+  }
+
+  &__about {
+    max-width: 72rem;
+
+    @media (min-width: $media-m) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+    }
+
+    @media (min-width: $media-l) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      max-width: 54rem;
+    }
+  }
+
+  &__copyright {
+    font-weight: 700;
+  }
+
+  &__socials-wrapper {
+    justify-self: center;
+
+    @media (min-width: $media-m) {
+      justify-self: end;
+    }
+    @media (min-width: $media-l) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      align-self: center;
+      padding-bottom: 19px;
+    }
+  }
+}

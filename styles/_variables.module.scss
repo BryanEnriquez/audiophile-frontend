@@ -1,0 +1,25 @@
+$color-black: #191919;
+$color-white: #ffffff;
+$color-orange: #fbaf85;
+$color-orange-2: #d87d4a;
+
+$navbar-height: 90px;
+$navbar-height-l: 97px;
+
+$max-width: 500px;
+$max-width-m: 900px;
+// $max-width-m: 689px;
+$max-width-l: 1110px;
+
+$media-m: 768px;
+$mediaM: 767px;
+// $media-l: 1440px;
+$media-l: 1150px;
+$mediaL: 1149px;
+
+// Image breakpoints: media-[size]px - 1px
+// set <source> breakpoints 1px below device breakpoints to load the next img when intended
+:export {
+  mediaM: $mediaM;
+  mediaL: $mediaL;
+}

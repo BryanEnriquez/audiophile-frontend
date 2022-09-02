@@ -1,0 +1,56 @@
+@import '../../styles/variables.module';
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 48px;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s, background-color 0.2s;
+
+  // types
+  &--min {
+    width: 160px;
+  }
+
+  // colors
+  &--orange {
+    color: #ffffff;
+    background-color: #d87d4a;
+
+    @media (min-width: $media-l) {
+      &:hover {
+        background-color: #fbaf85;
+      }
+    }
+  }
+
+  &--black {
+    color: #ffffff;
+    background-color: #000000;
+
+    @media (min-width: $media-l) {
+      &:hover {
+        background-color: #4c4c4c;
+      }
+    }
+  }
+
+  &--clear {
+    color: #000000;
+    background-color: transparent;
+    border: 1px solid #000000;
+
+    @media (min-width: $media-l) {
+      &:hover {
+        color: #ffffff;
+        background-color: #000000;
+      }
+    }
+  }
+}

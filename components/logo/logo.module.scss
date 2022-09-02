@@ -1,0 +1,28 @@
+@import '../../styles/variables.module';
+
+.logo-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  &--header {
+    justify-self: center;
+
+    @media (min-width: $media-m) {
+      justify-self: start;
+    }
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    top: -10000px;
+    left: -5000px;
+  }
+}
+
+.logo {
+  display: block;
+  width: 143px;
+  height: 25px;
+}

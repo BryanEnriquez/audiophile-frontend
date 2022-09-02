@@ -1,0 +1,14 @@
+@import '../../styles/variables.module';
+
+.wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+
+  @media (min-width: $media-m) {
+    max-width: $max-width-m;
+  }
+
+  @media (min-width: $media-l) {
+    max-width: $max-width-l;
+  }
+}

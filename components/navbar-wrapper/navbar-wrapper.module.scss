@@ -1,0 +1,11 @@
+@import '../../styles/variables.module';
+
+.navbar-wrapper {
+  position: relative;
+  height: 100%;
+  padding: 0 24px;
+
+  @media (min-width: $media-m) {
+    padding: 0 40px;
+  }
+}

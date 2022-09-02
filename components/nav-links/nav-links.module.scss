@@ -1,0 +1,47 @@
+@import '../../styles/variables.module';
+
+.nav-links {
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  gap: 16px 0;
+  justify-items: center;
+
+  @media (min-width: $media-m) {
+    grid-template-columns: repeat(4, auto);
+    gap: 34px;
+  }
+
+  &--header {
+    display: none;
+
+    @media (min-width: $media-l) {
+      justify-self: center;
+      display: grid;
+      padding-bottom: 1px;
+    }
+  }
+
+  &--footer {
+    display: grid;
+  }
+
+  li {
+    display: block;
+  }
+
+  a {
+    display: block;
+    font-size: 1.3rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: $color-white;
+    transition: color 0.2s;
+
+    @media (min-width: $media-l) {
+      &:hover {
+        color: #d87d4a;
+      }
+    }
+  }
+}

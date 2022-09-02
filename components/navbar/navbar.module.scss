@@ -1,0 +1,106 @@
+@import '../../styles/variables.module';
+
+.navbar {
+  height: 100%;
+  display: grid;
+  // `btn logo btn` on mobile/tablet
+  grid-template-columns: 2.3rem 1fr 2.3rem;
+  grid-template-rows: auto;
+  gap: 0 5px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (min-width: $media-m) {
+    gap: 0 35px;
+    margin: 0 auto;
+    max-width: $max-width-m;
+  }
+
+  @media (min-width: $media-l) {
+    gap: 0 10px;
+    // `logo navLinks btn` on desktop
+    grid-template-columns: 143px 1fr 143px;
+    max-width: $max-width-l;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  button {
+    display: block;
+    position: relative;
+    border-width: 0;
+    overflow: hidden;
+    background-color: inherit;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    span {
+      position: absolute;
+      top: -1000px;
+      left: -2000px;
+      opacity: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .menu-btn {
+    width: 1.6rem;
+    height: 1.5rem;
+
+    @media (min-width: $media-l) {
+      display: none;
+    }
+  }
+
+  .cart-btn {
+    width: 2.3rem;
+    height: 2rem;
+
+    @media (min-width: $media-l) {
+      justify-self: end;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.navImgLinks {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-radius: 0 0 8px 8px;
+  color: #000000;
+  background-color: #ffffff;
+  transition: height 0.2s;
+  overflow: scroll;
+
+  @media (min-width: $media-l) {
+    display: none;
+  }
+
+  &--open {
+    height: calc(100vh - 90px);
+
+    @media (min-width: $media-m) {
+      height: calc(302px + 3.8rem);
+    }
+  }
+
+  & > div {
+    padding: 32px 24px 35px 24px;
+
+    @media (min-width: $media-m) {
+      padding: 56px 40px 67px 40px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import '../../styles/variables.module';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navbar-height;
+  z-index: 50;
+  color: $color-white;
+  background-color: #000000;
+
+  @media (min-width: $media-l) {
+    height: $navbar-height-l;
+  }
+}
