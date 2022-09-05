@@ -1,6 +1,6 @@
 import ProductPicture from '../product-picture';
 import Button from '../button';
-import type { FeaturedProduct } from '../../pages/index';
+import type { FeaturedProduct } from '../../types';
 import type { ButtonColors } from '../button';
 import styles from './featured.module.scss';
 
@@ -36,21 +36,21 @@ const HomeFeatured = ({ featured }: HomeFeaturedProps) => {
     <div className={styles.featured}>
       <div className={styles.featured__1}>
         <div className={styles.featured__img1}>
-          <ProductPicture product={first} />
+          <ProductPicture images={first.images} altText={first.heading} />
         </div>
         <div className={styles.featured__copy1}>
           <ProductCopy item={first} color="black" />
         </div>
       </div>
       <div className={styles.featured__2}>
-        <ProductPicture product={second} />
+        <ProductPicture images={second.images} altText={second.heading} />
         <div className={styles.featured__copy2}>
           <ProductCopy item={second} color="clear" />
         </div>
       </div>
       <div className={styles.featured__3}>
         <div className={styles.featured__img3}>
-          <ProductPicture product={third} />
+          <ProductPicture images={third.images} altText={third.heading} />
         </div>
         <div className={styles.featured__copy3}>
           <ProductCopy item={third} color="clear" />

@@ -1,20 +1,22 @@
 import Picture from '../picture';
-import type { FeaturedProduct } from '../../pages';
+import type { ImageGroup } from '../../types';
+import type { ImageLoading } from '../../types';
 
 type Props = {
-  product: FeaturedProduct;
-  loading?: 'eager' | 'lazy';
+  images: ImageGroup;
+  altText: string;
+  loading?: ImageLoading;
 };
 
-const ProductPicture = ({ product, loading = 'lazy' }: Props) => {
-  const { s, m, l } = product.images;
+const ProductPicture = ({ images, altText, loading = 'lazy' }: Props) => {
+  const { s, m, l } = images;
 
   return (
     <Picture
       s={s.data.attributes.url}
       m={m.data.attributes.url}
       l={l.data.attributes.url}
-      alt={product.heading}
+      alt={altText}
       loading={loading}
     />
   );

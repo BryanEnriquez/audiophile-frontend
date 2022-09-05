@@ -21,7 +21,7 @@ body {
   background-color: #fafafa;
 }
 
-ul {
+ol, ul {
   list-style: none;
 }
 

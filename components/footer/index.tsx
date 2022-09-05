@@ -1,4 +1,4 @@
-import Wrapper from '../wrapper';
+import MaxWidthWrapper from '../max-width-wrapper';
 import Logo from '../logo';
 import NavLinks from '../nav-links';
 import Socials from '../socials';
@@ -13,10 +13,10 @@ const footerCopy = {
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <Wrapper>
+      <MaxWidthWrapper>
         <div className={styles.footer__highlight} />
-      </Wrapper>
-      <Wrapper>
+      </MaxWidthWrapper>
+      <MaxWidthWrapper>
         <div className={styles.footer__links}>
           <Logo />
           <NavLinks type="footer" />
@@ -28,7 +28,7 @@ const Footer = () => {
             <Socials />
           </div>
         </div>
-      </Wrapper>
+      </MaxWidthWrapper>
     </footer>
   );
 };

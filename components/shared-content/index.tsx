@@ -1,5 +1,5 @@
 import CategoryImgLinks from '../category-img-links';
-import Wrapper from '../wrapper';
+import MaxWidthWrapper from '../max-width-wrapper';
 import Grid from '../grid';
 import CommonDescription from '../common-description';
 
@@ -11,15 +11,13 @@ type Props = {
 
 const SharedContent = ({ children, type, padTop = false }: Props) => {
   return (
-    <>
-      <Wrapper>
-        <Grid type={type}>
-          <CategoryImgLinks padTop={padTop} />
-          {children}
-          <CommonDescription />
-        </Grid>
-      </Wrapper>
-    </>
+    <MaxWidthWrapper>
+      <Grid type={type}>
+        <CategoryImgLinks padTop={padTop} />
+        {children}
+        <CommonDescription />
+      </Grid>
+    </MaxWidthWrapper>
   );
 };
 

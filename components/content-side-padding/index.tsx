@@ -1,8 +1,8 @@
 import type { Props } from '../../types';
 import styles from './pad.module.scss';
 
-const PadContent = ({ children }: Props) => (
+const ContentSidePadding = ({ children }: Props) => (
   <div className={styles.pad}>{children}</div>
 );
 
-export default PadContent;
+export default ContentSidePadding;

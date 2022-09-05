@@ -1,3 +1,4 @@
+import type { ImageLoading } from '../../types';
 import variables from '../../styles/_variables.module.scss';
 
 type Props = {
@@ -5,7 +6,7 @@ type Props = {
   m: string;
   l: string;
   alt: string;
-  loading?: 'eager' | 'lazy';
+  loading?: ImageLoading;
 };
 
 const Picture = ({ s, m, l, alt, loading = 'lazy' }: Props) => {

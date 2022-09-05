@@ -6,7 +6,7 @@ import CategoryImgLinks from '../category-img-links';
 import menuIcon from '../../public/images/shared/tablet/icon-hamburger.svg';
 import cartIcon from '../../public/images/shared/desktop/icon-cart.svg';
 import styles from './navbar.module.scss';
-import Wrapper from '../wrapper';
+import MaxWidthWrapper from '../max-width-wrapper';
 
 type NavbarProps = {
   isMenuOpen: boolean;
@@ -51,9 +51,9 @@ const Navbar = ({
         }`}
       >
         <div>
-          <Wrapper>
+          <MaxWidthWrapper>
             <CategoryImgLinks />
-          </Wrapper>
+          </MaxWidthWrapper>
         </div>
       </nav>
     </NavbarWrapper>

@@ -1,4 +1,4 @@
-import type { HomepageAttributes } from '../pages';
+import type { HomepageAttributes } from '../types';
 
 export const homepage: HomepageAttributes = {
   // salesPitch: {

@@ -1,6 +1,6 @@
 import ProductPicture from '../product-picture';
 import Button from '../button';
-import type { FeaturedProduct } from '../../pages';
+import type { FeaturedProduct } from '../../types';
 import styles from './hero.module.scss';
 
 type Props = { product: FeaturedProduct };
@@ -11,7 +11,11 @@ const Hero = ({ product }: Props) => {
   return (
     <div className={styles.hero}>
       <div className={styles.hero__imgBox}>
-        <ProductPicture product={product} loading="eager" />
+        <ProductPicture
+          images={product.images}
+          altText={product.heading}
+          loading="eager"
+        />
       </div>
       <div className={styles.hero__textBox}>
         {isNew && <span>NEW PRODUCT</span>}

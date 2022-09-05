@@ -1,0 +1,9 @@
+@import '../../styles/variables.module';
+
+.content {
+  padding-bottom: 120px;
+
+  @media (min-width: $media-l) {
+    padding-bottom: 160px;
+  }
+}
