@@ -1,0 +1,30 @@
+@import '../../styles/variables.module';
+
+.btnBox {
+  padding: 16px 0 24px 0;
+
+  > button {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    border-width: 0;
+    color: #7d7d7d;
+    font-family: 'Manrope', sans-serif;
+    background-color: inherit;
+  }
+}
+
+@media (min-width: $media-m) {
+  .btnBox {
+    padding-top: 33px;
+  }
+}
+
+@media (min-width: $media-l) {
+  .btnBox {
+    padding: 79px 0 56px 0;
+
+    > button:hover {
+      cursor: pointer;
+    }
+  }
+}

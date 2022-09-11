@@ -1,0 +1,16 @@
+@import '../../styles/variables.module';
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  gap: 88px;
+
+  @media (min-width: $media-m) {
+    gap: 120px;
+  }
+
+  @media (min-width: $media-l) {
+    gap: 160px;
+  }
+}

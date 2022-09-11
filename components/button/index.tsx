@@ -6,6 +6,7 @@ export type ButtonColors = 'orange' | 'black' | 'clear';
 type BaseButton = {
   label?: string;
   color?: ButtonColors;
+  min?: boolean;
 };
 
 type LinkType = BaseButton & {
@@ -14,32 +15,38 @@ type LinkType = BaseButton & {
 };
 
 type ButtonType = BaseButton & {
-  type: 'btn';
-  href: undefined;
+  type: 'button';
+  href?: undefined;
 };
 
-type Props = LinkType | ButtonType;
+type SubmitType = BaseButton & {
+  type: 'submit';
+  href?: undefined;
+};
+
+type Props = LinkType | ButtonType | SubmitType;
+
+const addMin = (s: string) => `${s} ${styles['btn--min']}`;
 
 const Button = ({
   type,
   href,
+  min = false,
   label = 'See product',
   color = 'orange',
 }: Props) => {
   let classes = `${styles.btn} ${styles[`btn--${color}`]}`;
 
   if (type === 'link') {
-    classes += ` ${styles['btn--min']}`;
-
     return (
       <Link href={href}>
-        <a className={classes}>{label}</a>
+        <a className={addMin(classes)}>{label}</a>
       </Link>
     );
   }
 
   return (
-    <button type="button" className={classes}>
+    <button type={type} className={min ? addMin(classes) : classes}>
       {label}
     </button>
   );

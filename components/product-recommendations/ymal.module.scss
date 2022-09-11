@@ -1,0 +1,91 @@
+@import '../../styles/variables.module';
+
+.ymal {
+  margin: 120px 0;
+
+  > h2 {
+    margin-bottom: 40px;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    letter-spacing: 0.857px;
+    text-align: center;
+  }
+
+  &__group {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 56px 11px;
+  }
+
+  &__img {
+    position: relative;
+    padding-top: 36.7%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    background-color: #f1f1f1;
+
+    > picture > img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__txt {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    justify-items: center;
+
+    > h3 {
+      margin-bottom: 32px;
+      font-size: 2.4rem;
+      line-height: 3.3rem;
+      letter-spacing: 1.714px;
+      padding-left: 2px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media (min-width: $media-m) {
+  .ymal {
+    > h2 {
+      margin-bottom: 56px;
+      font-size: 3.2rem;
+      letter-spacing: 1.142px;
+    }
+
+    &__group {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+    }
+
+    &__img {
+      padding-top: 0;
+      height: 318px;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media (min-width: $media-l) {
+  .ymal {
+    margin: 160px 0;
+
+    > h2 {
+      margin-bottom: 64px;
+    }
+
+    &__group {
+      gap: 0 30px;
+    }
+  }
+}

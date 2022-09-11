@@ -1,8 +1,10 @@
 import qs from 'qs';
+import { populateComponentMedia } from './populateComponentMedia';
 import type {
   ProductType,
   ApiCollectionTypeResponse,
   ProductPreview,
+  ProductRecommendation,
 } from '../types';
 
 type Resource = 'homepage' | 'products';
@@ -12,6 +14,9 @@ type Params = {
   sort?: string[];
   filters?: {};
   populate?: string[] | {};
+  pagination?:
+    | { page?: number; pageSize?: number; withCount?: boolean }
+    | { start?: number; limit?: number; withCount?: boolean };
 };
 
 export const api = async (resource: Resource, params: Params) => {
@@ -48,5 +53,31 @@ export const fetchProductsPreview = async (
         },
       },
     },
+  });
+};
+
+export const fetchProductRecommendations = async (
+  category: ProductType,
+  limit: number,
+  idToNotMatch?: number | null,
+  customSort?: string[]
+): Promise<ApiCollectionTypeResponse<ProductRecommendation>> => {
+  return await api('products', {
+    fields: ['abbrev', 'slug'],
+    sort: customSort || ['new:desc', 'publishedAt:desc'],
+    filters: {
+      ...(idToNotMatch && {
+        id: {
+          $ne: idToNotMatch,
+        },
+      }),
+      category: {
+        type: {
+          $eq: category,
+        },
+      },
+    },
+    populate: { ...populateComponentMedia('ymal') },
+    pagination: { limit },
   });
 };

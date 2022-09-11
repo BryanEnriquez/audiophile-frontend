@@ -68,15 +68,79 @@ export type ProductPreview = {
   attributes: ProductPreviewAttributes;
 };
 
+// Product slug type          ////////////////////////////////////////////////////////
+
+export type ProductSlugOnly = {
+  id: number;
+  attributes: {
+    slug: string;
+  };
+};
+
+// Full product data          ////////////////////////////////////////////////////////
+
+export type ProductIncluded = { item: string; quantity: number }[];
+
+type ProductCategory = {
+  data: {
+    id: number;
+    attributes: { type: ProductType };
+  };
+};
+
+export type ProductFullAttributes = {
+  name: string;
+  abbrev: string;
+  description: string;
+  new: boolean;
+  price: number;
+  features: string;
+  included: ProductIncluded;
+  category: ProductCategory;
+  mainImg: ImageGroup;
+  img1: ImageGroup;
+  img2: ImageGroup;
+  img3: ImageGroup;
+  cartImg: ImageAttributes;
+};
+
+export type ProductFull = {
+  id: number;
+  attributes: ProductFullAttributes;
+};
+
+// Product Recommendations    ////////////////////////////////////////////////////////
+
+export type ProductRecommendation = {
+  id: number;
+  attributes: {
+    new: boolean;
+    publishedAt: string;
+    abbrev: string;
+    slug: string;
+    ymal: ImageGroup;
+  };
+};
+
 // Api response structure     ////////////////////////////////////////////////////////
 
+// NOTE total = total entries in DB that satisfy filter, not # of results returned
+
+type PaginationByPageData = {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+};
+
+export type PaginationByOffsetData = {
+  start: number;
+  limit: number;
+  total: number;
+};
+
 type ApiResponseMeta = {
-  pagination: {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    total: number;
-  };
+  pagination: PaginationByPageData | PaginationByOffsetData;
 };
 
 export type ApiSingleTypeResponse<T> = {

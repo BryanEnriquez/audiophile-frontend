@@ -6,7 +6,7 @@
   align-items: center;
   text-align: center;
   min-height: 48px;
-
+  border: none;
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -22,31 +22,43 @@
   &--orange {
     color: #ffffff;
     background-color: #d87d4a;
-
-    @media (min-width: $media-l) {
-      &:hover {
-        background-color: #fbaf85;
-      }
-    }
   }
 
   &--black {
     color: #ffffff;
     background-color: #000000;
-
-    @media (min-width: $media-l) {
-      &:hover {
-        background-color: #4c4c4c;
-      }
-    }
   }
 
   &--clear {
     color: #000000;
     background-color: transparent;
     border: 1px solid #000000;
+  }
+}
 
-    @media (min-width: $media-l) {
+@media (min-width: $media-l) {
+  .btn {
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--min {
+      width: 160px;
+    }
+
+    &--orange {
+      &:hover {
+        background-color: #fbaf85;
+      }
+    }
+
+    &--black {
+      &:hover {
+        background-color: #4c4c4c;
+      }
+    }
+
+    &--clear {
       &:hover {
         color: #ffffff;
         background-color: #000000;
