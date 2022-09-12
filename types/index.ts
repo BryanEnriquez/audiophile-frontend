@@ -91,6 +91,7 @@ type ProductCategory = {
 export type ProductFullAttributes = {
   name: string;
   abbrev: string;
+  slug: string;
   description: string;
   new: boolean;
   price: number;

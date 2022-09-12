@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import ContentWrapper from '../content-wrapper';
 import CategoryBlock from '../category-block';
 import ContentSidePadding from '../content-side-padding';
@@ -12,15 +13,22 @@ type Props = {
 };
 
 const ProductsCategoryPage = ({ category, data }: Props) => (
-  <ContentWrapper>
-    <CategoryBlock heading={category} />
-    <ContentSidePadding>
-      <MaxWidthWrapper>
-        <ProductsList products={data} />
-      </MaxWidthWrapper>
-      <SharedContent type="b" />
-    </ContentSidePadding>
-  </ContentWrapper>
+  <>
+    <Head>
+      <title>
+        {`Audiophile - ${category[0].toUpperCase() + category.slice(1)}`}
+      </title>
+    </Head>
+    <ContentWrapper>
+      <CategoryBlock heading={category} />
+      <ContentSidePadding>
+        <MaxWidthWrapper>
+          <ProductsList products={data} />
+        </MaxWidthWrapper>
+        <SharedContent type="b" />
+      </ContentSidePadding>
+    </ContentWrapper>
+  </>
 );
 
 export default ProductsCategoryPage;

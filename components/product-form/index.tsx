@@ -26,6 +26,7 @@ const ProductForm = ({ product }: Props) => {
         price: product.attributes.price,
         quantity,
         cartImg: product.attributes.cartImg.data.attributes.url,
+        slug: product.attributes.slug,
       },
     });
 

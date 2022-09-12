@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import ContentWrapper from '../../components/content-wrapper';
 import ContentSidePadding from '../../components/content-side-padding';
@@ -23,16 +24,21 @@ type Props = {
 };
 
 const ProductPage: NextPage<Props> = ({ data, recommended }) => (
-  <ContentWrapper>
-    <ContentSidePadding>
-      <MaxWidthWrapper>
-        <BackButton />
-        <Product product={data} />
-        <ProductRecommendations ymal={recommended} />
-      </MaxWidthWrapper>
-      <SharedContent type="b" />
-    </ContentSidePadding>
-  </ContentWrapper>
+  <>
+    <Head>
+      <title>{`Audiophile - ${data.attributes.name}`}</title>
+    </Head>
+    <ContentWrapper>
+      <ContentSidePadding>
+        <MaxWidthWrapper>
+          <BackButton />
+          <Product product={data} />
+          <ProductRecommendations ymal={recommended} />
+        </MaxWidthWrapper>
+        <SharedContent type="b" />
+      </ContentSidePadding>
+    </ContentWrapper>
+  </>
 );
 
 export default ProductPage;
@@ -46,6 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       fields: [
         'name',
         'abbrev',
+        'slug',
         'description',
         'new',
         'price',
