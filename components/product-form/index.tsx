@@ -1,25 +1,35 @@
 import { useState } from 'react';
-import Button from '../button';
 import type { FormEvent } from 'react';
-import type { ProductFullAttributes } from '../../types/index';
+import Button from '../button';
+import { useCart } from '../../context/cartContext';
+import type { ProductFull } from '../../types/index';
 import styles from './form.module.scss';
 
 type Props = {
-  product: ProductFullAttributes;
+  product: ProductFull;
 };
 
 const selectOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const ProductForm = ({ product }: Props) => {
   const [quantity, setQuantity] = useState(1);
+  const { dispatch } = useCart();
 
-  // TODO Add cart functionality
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setQuantity(1);
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: {
+        id: product.id,
+        abbrev: product.attributes.abbrev,
+        price: product.attributes.price,
+        quantity,
+        cartImg: product.attributes.cartImg.data.attributes.url,
+      },
+    });
 
-    // Cart logic...
+    setQuantity(1);
   };
 
   return (

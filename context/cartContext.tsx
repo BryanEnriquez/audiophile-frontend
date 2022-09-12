@@ -1,38 +1,35 @@
 import { createContext, useContext, useReducer, Dispatch } from 'react';
 import type { Props } from '../types';
 
-// TODO update placeholders
-interface Product {
+type CartItem = {
   id: number;
-  name: string;
-  description: string;
-}
-
-interface CartItem extends Product {
+  abbrev: string;
+  price: number;
   quantity: number;
-}
-
-interface CartItems {
-  [id: string]: CartItem;
-}
-
-// TODO
-interface CartState {
-  items: CartItems;
-}
-
-const initialState: CartState = {
-  items: {},
+  cartImg: string;
 };
 
-type Id = number;
-type CartItemWithQuantity = { item: CartItem; count: number };
+type CartState = {
+  [id: string]: CartItem;
+};
 
-type AddItem = { type: 'ADD_ITEM'; payload: CartItemWithQuantity };
+const initialState: CartState = {};
+
+type Id = number;
+
+type AddItem = { type: 'ADD_ITEM'; payload: CartItem };
 type RemoveItem = { type: 'REMOVE_ITEM'; payload: Id };
+type RemoveAll = { type: 'REMOVE_ALL' };
 type IncrementItem = { type: 'INCREMENT'; payload: Id };
 type DecrementItem = { type: 'DECREMENT'; payload: Id };
-type CartAction = AddItem | RemoveItem | IncrementItem | DecrementItem;
+type RestoreCart = { type: 'RESTORE'; payload: CartState };
+type CartAction =
+  | AddItem
+  | RemoveItem
+  | RemoveAll
+  | IncrementItem
+  | DecrementItem
+  | RestoreCart;
 
 type Operation = 'ADD' | 'SUBTRACT';
 
@@ -42,46 +39,36 @@ const updateCartItemQuantity = (
   op: Operation = 'ADD',
   amount: number = 1
 ): CartState => {
-  const currentQuantity = state.items[id].quantity;
+  const currentQuantity = state[id].quantity;
+
   const newQuantity =
     op === 'ADD' ? currentQuantity + amount : currentQuantity - amount;
 
   return {
-    items: {
-      ...state.items,
-      [id]: {
-        ...state.items[id],
-        quantity: newQuantity,
-      },
-    },
+    ...state,
+    [id]: { ...state[id], quantity: newQuantity },
   };
 };
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'ADD_ITEM': {
-      const {
-        item: { id },
-        count,
-      } = action.payload;
+      const { id, quantity } = action.payload;
 
-      if (state.items[id]) {
-        return updateCartItemQuantity(state, id, 'ADD', count);
+      if (state[id]) {
+        return updateCartItemQuantity(state, id, 'ADD', quantity);
       }
 
-      return {
-        items: { ...state.items, [id]: action.payload },
-      };
+      return { ...state, [id]: action.payload };
     }
     case 'REMOVE_ITEM': {
-      const nextState = {
-        items: {
-          ...state.items,
-        },
-      };
+      const nextState = { ...state };
 
-      delete nextState.items[action.payload];
+      delete nextState[action.payload];
       return nextState;
+    }
+    case 'REMOVE_ALL': {
+      return {};
     }
     case 'INCREMENT': {
       return updateCartItemQuantity(state, action.payload, 'ADD');
@@ -89,18 +76,17 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
     case 'DECREMENT': {
       const id = action.payload;
 
-      if (state.items[id].quantity === 1) {
-        const nextState = {
-          items: {
-            ...state.items,
-          },
-        };
+      if (state[id].quantity === 1) {
+        const nextState = { ...state };
 
-        delete nextState.items[action.payload];
+        delete nextState[id];
         return nextState;
       }
 
       return updateCartItemQuantity(state, id, 'SUBTRACT');
+    }
+    case 'RESTORE': {
+      return action.payload;
     }
     default:
       return state;

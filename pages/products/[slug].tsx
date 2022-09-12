@@ -13,13 +13,12 @@ import type {
   ApiCollectionTypeResponse,
   ProductSlugOnly,
   ProductFull,
-  ProductFullAttributes,
   ProductRecommendation,
   ProductType,
 } from '../../types';
 
 type Props = {
-  data: ProductFullAttributes;
+  data: ProductFull;
   recommended: ProductRecommendation[];
 };
 
@@ -125,7 +124,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      data: data[0].attributes,
+      data: data[0],
       recommended: recommended.slice(0, 3),
     },
   };
