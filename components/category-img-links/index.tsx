@@ -4,9 +4,10 @@ import styles from './category-links.module.scss';
 
 type Props = {
   padTop?: boolean;
+  onClick?: () => void;
 };
 
-const CategoryImgLinks = ({ padTop = false }: Props) => {
+const CategoryImgLinks = ({ padTop = false, onClick }: Props) => {
   return (
     <ul
       className={`${styles.categoryLinks}${
@@ -16,7 +17,7 @@ const CategoryImgLinks = ({ padTop = false }: Props) => {
       {navLinks.slice(1).map((el) => (
         <li key={el.label}>
           <Link href={el.href}>
-            <a>
+            <a {...(onClick && { onClick })}>
               <img
                 src={el.thumbnail}
                 loading="lazy"

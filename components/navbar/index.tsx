@@ -1,12 +1,12 @@
 import NavbarWrapper from '../navbar-wrapper';
+import MaxWidthWrapper from '../max-width-wrapper';
 import NavLinks from '../nav-links';
-import Logo from '../logo';
 import CategoryImgLinks from '../category-img-links';
-
+import Logo from '../logo';
+import { useCart } from '../../context/cartContext';
 import menuIcon from '../../public/images/shared/tablet/icon-hamburger.svg';
 import cartIcon from '../../public/images/shared/desktop/icon-cart.svg';
-import styles from './navbar.module.scss';
-import MaxWidthWrapper from '../max-width-wrapper';
+import styles from './nav.module.scss';
 
 type NavbarProps = {
   isMenuOpen: boolean;
@@ -16,6 +16,27 @@ type NavbarProps = {
   setIsMenuOpen: (prevStateVal: boolean) => void;
 };
 
+type ButtonProps = {
+  text: string;
+  cb: () => void;
+  mod: string;
+  img: any;
+  imgAlt: string;
+  children?: React.ReactNode;
+};
+
+const NavButton = ({ text, cb, mod, img, imgAlt, children }: ButtonProps) => (
+  <button
+    type="button"
+    onClick={cb}
+    className={`${styles.nav__btn} ${styles[`nav__btn--${mod}`]}`}
+  >
+    <span className={styles.nav__btnTxt}>{text}</span>
+    {children}
+    <img src={img.src} alt={imgAlt} aria-hidden={true} />
+  </button>
+);
+
 const Navbar = ({
   isMenuOpen,
   toggleMenu,
@@ -23,27 +44,34 @@ const Navbar = ({
   toggleCart,
   setIsMenuOpen,
 }: NavbarProps) => {
+  const { cart } = useCart();
+  const totalItems = Object.values(cart).reduce(
+    (count, current) => count + current.quantity,
+    0
+  );
+
   return (
     <NavbarWrapper>
-      <nav className={styles.navbar}>
-        <button
-          type="button"
-          onClick={toggleMenu}
-          className={styles['menu-btn']}
-        >
-          <span>{`${isMenuOpen ? 'Close' : 'Open'} menu`}</span>
-          <img src={menuIcon.src} alt="menu icon" aria-hidden={true} />
-        </button>
+      <nav className={styles.nav}>
+        <NavButton
+          text={`${isMenuOpen ? 'Close' : 'Open'} menu`}
+          mod="menu"
+          cb={toggleMenu}
+          img={menuIcon}
+          imgAlt="menu icon"
+        />
         <Logo header={true} onClick={() => setIsMenuOpen(false)} />
         <NavLinks />
-        <button
-          type="button"
-          onClick={toggleCart}
-          className={styles['cart-btn']}
-        >
-          <span>{`${isCartOpen ? 'Close' : 'Open'} shopping cart`}</span>
-          <img src={cartIcon.src} alt="cart icon" aria-hidden={true} />
-        </button>
+        <div className={styles.nav__btnBox}>
+          <NavButton
+            text={`${isCartOpen ? 'Close' : 'Open'} shopping cart`}
+            mod="cart"
+            cb={toggleCart}
+            img={cartIcon}
+            imgAlt="cart icon"
+          />
+          <span className={styles.nav__cartCount}>{totalItems}</span>
+        </div>
       </nav>
       <nav
         className={`${styles.navImgLinks}${
@@ -52,7 +80,7 @@ const Navbar = ({
       >
         <div>
           <MaxWidthWrapper>
-            <CategoryImgLinks />
+            <CategoryImgLinks onClick={() => setIsMenuOpen(false)} />
           </MaxWidthWrapper>
         </div>
       </nav>

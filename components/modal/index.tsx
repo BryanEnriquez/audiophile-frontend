@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { useModalRef } from '../../context/modalContext';
 import styles from './modal.module.scss';
 
 type Props = {
@@ -9,18 +9,10 @@ type Props = {
   children?: React.ReactNode;
 };
 
-type ModalFC = (props: Props) => JSX.Element | null;
+const Modal = ({ hidden, zIndex = 40, onBgClick, children }: Props) => {
+  const modalRef = useModalRef();
 
-// const Modal = ({ hidden, zIndex = 40, onBgClick, children }: Props) => {
-const Modal: ModalFC = ({ hidden, zIndex = 40, onBgClick, children }) => {
-  const [modalEl, setModalEl] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const el = document.getElementById('modal');
-    if (el) setModalEl(el);
-  }, []);
-
-  return modalEl
+  return modalRef
     ? ReactDOM.createPortal(
         <div
           className={`${styles.modal}${
@@ -31,7 +23,7 @@ const Modal: ModalFC = ({ hidden, zIndex = 40, onBgClick, children }) => {
         >
           {children}
         </div>,
-        modalEl
+        modalRef
       )
     : null;
 };
