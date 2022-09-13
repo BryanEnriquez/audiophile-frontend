@@ -8,24 +8,35 @@ type HomeFeaturedProps = {
   featured: FeaturedProduct[];
 };
 
-type CopyProps = {
+type FeaturedProps = {
   item: FeaturedProduct;
   color: ButtonColors;
+  num: string;
+  imgBox?: boolean;
 };
 
-const ProductCopy = ({ item, color }: CopyProps) => {
-  const { heading, description, product } = item;
+const FeaturedItem = ({ item, color, num, imgBox = true }: FeaturedProps) => {
+  const { heading, description, product, images } = item;
+
+  const RenderedPicture = <ProductPicture images={images} altText={heading} />;
 
   return (
-    <>
-      <h2>{heading}</h2>
-      {description && <p>{description}</p>}
-      <Button
-        type="link"
-        href={`/products/${product.data.attributes.slug}`}
-        color={color}
-      />
-    </>
+    <div className={styles[`featured__${num}`]}>
+      {imgBox ? (
+        <div className={styles[`featured__img${num}`]}>{RenderedPicture}</div>
+      ) : (
+        RenderedPicture
+      )}
+      <div className={styles[`featured__copy${num}`]}>
+        <h2>{heading}</h2>
+        {description && <p>{description}</p>}
+        <Button
+          type="link"
+          href={`/products/${product.data.attributes.slug}`}
+          color={color}
+        />
+      </div>
+    </div>
   );
 };
 
@@ -34,28 +45,9 @@ const HomeFeatured = ({ featured }: HomeFeaturedProps) => {
 
   return (
     <div className={styles.featured}>
-      <div className={styles.featured__1}>
-        <div className={styles.featured__img1}>
-          <ProductPicture images={first.images} altText={first.heading} />
-        </div>
-        <div className={styles.featured__copy1}>
-          <ProductCopy item={first} color="black" />
-        </div>
-      </div>
-      <div className={styles.featured__2}>
-        <ProductPicture images={second.images} altText={second.heading} />
-        <div className={styles.featured__copy2}>
-          <ProductCopy item={second} color="clear" />
-        </div>
-      </div>
-      <div className={styles.featured__3}>
-        <div className={styles.featured__img3}>
-          <ProductPicture images={third.images} altText={third.heading} />
-        </div>
-        <div className={styles.featured__copy3}>
-          <ProductCopy item={third} color="clear" />
-        </div>
-      </div>
+      <FeaturedItem item={first} color="black" num="1" />
+      <FeaturedItem item={second} color="clear" num="2" imgBox={false} />
+      <FeaturedItem item={third} color="clear" num="3" />
     </div>
   );
 };
