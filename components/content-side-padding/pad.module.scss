@@ -1,9 +1,0 @@
-@import '../../styles/variables.module';
-
-.pad {
-  padding: 0 24px;
-
-  @media (min-width: $media-m) {
-    padding: 0 40px;
-  }
-}

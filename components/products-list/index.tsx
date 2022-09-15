@@ -26,7 +26,7 @@ const ItemPreview = ({ product, loading = 'lazy' }: ItemPreviewProps) => {
           {isNew && <span>NEW PRODUCT</span>}
           <h2>{name}</h2>
           <p>{description}</p>
-          <Button type="link" href={`/products/${slug}`} />
+          <Button type="link" href={`/products/${slug}`} min />
         </div>
       </div>
     </li>

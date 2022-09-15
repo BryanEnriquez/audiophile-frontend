@@ -1,0 +1,66 @@
+@import './variables.module';
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../public/font/ManropeV.woff2') format('woff2');
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pad {
+  padding: 0 24px;
+}
+
+.mwr {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+@media (min-width: $media-m) {
+  .pad {
+    padding: 0 40px;
+  }
+
+  .mwr {
+    max-width: $max-width-m;
+  }
+
+  .no-scroll {
+    overflow: visible;
+  }
+}
+
+@media (min-width: $media-l) {
+  .mwr {
+    max-width: $max-width-l;
+  }
+}

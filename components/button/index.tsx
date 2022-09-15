@@ -7,6 +7,7 @@ type BaseButton = {
   label?: string;
   color?: ButtonColors;
   min?: boolean;
+  onClick?: () => void;
 };
 
 type LinkType = BaseButton & {
@@ -26,27 +27,28 @@ type SubmitType = BaseButton & {
 
 type Props = LinkType | ButtonType | SubmitType;
 
-const addMin = (s: string) => `${s} ${styles['btn--min']}`;
-
 const Button = ({
   type,
   href,
   min = false,
   label = 'See product',
   color = 'orange',
+  onClick,
 }: Props) => {
-  let classes = `${styles.btn} ${styles[`btn--${color}`]}`;
+  const attributes: { className: string; onClick?: () => void } = {
+    className: `${styles.btn} ${styles[`btn--${color}`]}${
+      min ? ' ' + styles['btn--min'] : ''
+    }`,
+  };
 
-  if (type === 'link') {
-    return (
-      <Link href={href}>
-        <a className={addMin(classes)}>{label}</a>
-      </Link>
-    );
-  }
+  if (onClick) attributes.onClick = onClick;
 
-  return (
-    <button type={type} className={min ? addMin(classes) : classes}>
+  return type === 'link' ? (
+    <Link href={href}>
+      <a {...attributes}>{label}</a>
+    </Link>
+  ) : (
+    <button {...attributes} type={type}>
       {label}
     </button>
   );

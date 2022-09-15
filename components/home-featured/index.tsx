@@ -34,6 +34,7 @@ const FeaturedItem = ({ item, color, num, imgBox = true }: FeaturedProps) => {
           type="link"
           href={`/products/${product.data.attributes.slug}`}
           color={color}
+          min
         />
       </div>
     </div>

@@ -1,5 +1,5 @@
 import type { ImageLoading } from '../../types';
-import variables from '../../styles/_variables.module.scss';
+import variables from '../../styles/imgMediaExports.module.scss';
 
 type Props = {
   s: string;
@@ -9,14 +9,12 @@ type Props = {
   loading?: ImageLoading;
 };
 
-const Picture = ({ s, m, l, alt, loading = 'lazy' }: Props) => {
-  return (
-    <picture>
-      <source media={`(max-width: ${variables.mediaM})`} srcSet={s} />
-      <source media={`(max-width: ${variables.mediaL})`} srcSet={m} />
-      <img src={l} alt={alt} loading={loading} />
-    </picture>
-  );
-};
+const Picture = ({ s, m, l, alt, loading = 'lazy' }: Props) => (
+  <picture>
+    <source media={`(max-width: ${variables.mediaM})`} srcSet={s} />
+    <source media={`(max-width: ${variables.mediaL})`} srcSet={m} />
+    <img src={l} alt={alt} loading={loading} />
+  </picture>
+);
 
 export default Picture;

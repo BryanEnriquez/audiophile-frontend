@@ -22,7 +22,7 @@ const Hero = ({ product }: Props) => {
         <h1>{product.heading}</h1>
         <p>{product.description}</p>
         <div>
-          <Button type="link" href={`/products/${slug}`} />
+          <Button type="link" href={`/products/${slug}`} min />
         </div>
       </div>
     </div>

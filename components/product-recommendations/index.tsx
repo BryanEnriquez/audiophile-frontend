@@ -18,7 +18,7 @@ const ProductRecommendations = ({ ymal }: Props) => (
           </div>
           <div className={styles.ymal__txt}>
             <h3>{abbrev}</h3>
-            <Button type="link" href={`/products/${slug}`} min={true} />
+            <Button type="link" href={`/products/${slug}`} min />
           </div>
         </li>
       ))}

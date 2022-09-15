@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '../navbar';
 import Modal from '../modal';
 import styles from './header.module.scss';
+import Cart from '../cart';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +18,11 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const closeAll = () => {
+    setIsCartOpen(false);
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className={styles.header}>
       <Navbar
@@ -25,14 +31,13 @@ const Header = () => {
         isCartOpen={isCartOpen}
         toggleCart={toggleCart}
         setIsMenuOpen={setIsMenuOpen}
+        closeAll={closeAll}
       />
-      <Modal
-        hidden={!isMenuOpen && !isCartOpen}
-        onBgClick={() => {
-          setIsCartOpen(false);
-          setIsMenuOpen(false);
-        }}
-      />
+      {(isMenuOpen || isCartOpen) && (
+        <Modal onBgClick={closeAll}>
+          {isCartOpen ? <Cart onNav={() => setIsCartOpen(false)} /> : null}
+        </Modal>
+      )}
     </header>
   );
 };

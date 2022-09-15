@@ -3,7 +3,7 @@ import MaxWidthWrapper from '../max-width-wrapper';
 import NavLinks from '../nav-links';
 import CategoryImgLinks from '../category-img-links';
 import Logo from '../logo';
-import { useCart } from '../../context/cartContext';
+import { useCartState } from '../../context/cartContext';
 import menuIcon from '../../public/images/shared/tablet/icon-hamburger.svg';
 import cartIcon from '../../public/images/shared/desktop/icon-cart.svg';
 import styles from './nav.module.scss';
@@ -14,6 +14,7 @@ type NavbarProps = {
   isCartOpen: boolean;
   toggleCart: () => void;
   setIsMenuOpen: (prevStateVal: boolean) => void;
+  closeAll: () => void;
 };
 
 type ButtonProps = {
@@ -43,8 +44,9 @@ const Navbar = ({
   isCartOpen,
   toggleCart,
   setIsMenuOpen,
+  closeAll,
 }: NavbarProps) => {
-  const { cart } = useCart();
+  const cart = useCartState();
   const totalItems = Object.values(cart).reduce(
     (count, current) => count + current.quantity,
     0
@@ -60,8 +62,8 @@ const Navbar = ({
           img={menuIcon}
           imgAlt="menu icon"
         />
-        <Logo header={true} onClick={() => setIsMenuOpen(false)} />
-        <NavLinks />
+        <Logo header={true} onClick={closeAll} />
+        <NavLinks onNav={closeAll} />
         <div className={styles.nav__btnBox}>
           <NavButton
             text={`${isCartOpen ? 'Close' : 'Open'} shopping cart`}

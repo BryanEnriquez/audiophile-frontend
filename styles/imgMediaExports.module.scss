@@ -1,0 +1,8 @@
+@import './variables.module';
+
+// Image breakpoints: media-[size]px - 1px
+// set <source> breakpoints 1px below device breakpoints to load the next img when intended
+:export {
+  mediaM: $mediaM;
+  mediaL: $mediaL;
+}

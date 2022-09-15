@@ -1,0 +1,116 @@
+@import '../../styles/variables.module';
+
+.cart {
+  position: absolute;
+  top: calc($navbar-height + 24px);
+  right: 0;
+  padding: 32px 28px 31px 28px;
+  width: 100%;
+  max-width: 37.7rem;
+  max-height: calc(100vh - (($navbar-height * 2) + 48px));
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-y: auto;
+
+  &__count {
+    display: block;
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    letter-spacing: 1.285px;
+  }
+
+  &__removeBtn {
+    position: absolute;
+    top: 31px;
+    right: 28px;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    border: none;
+    text-decoration: underline;
+    font-family: 'Manrope', sans-serif;
+    color: $color-gray;
+    background-color: inherit;
+  }
+
+  &__items {
+    margin: 31px 0 32px 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 24px;
+    max-height: 20rem;
+    overflow-y: auto;
+
+    > li {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto;
+      gap: 16px;
+      align-items: center;
+
+      > img {
+        width: 64px;
+        height: 64px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  &__itemInfo {
+    > p {
+      font-weight: 700;
+      line-height: 2.5rem;
+
+      &:first-of-type {
+        font-size: 1.5rem;
+      }
+      &:last-of-type {
+        font-size: 1.4rem;
+        color: $color-gray;
+      }
+    }
+  }
+
+  &__total {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    color: $color-gray;
+
+    > span {
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+      color: #000;
+    }
+  }
+}
+
+@media (min-width: $media-m) {
+  .cart {
+    padding: 31px 32px;
+    max-height: calc(100vh - (($navbar-height * 2) + 24px));
+
+    &__removeBtn {
+      right: 32px;
+    }
+
+    &__items {
+      margin: 32px 0;
+      max-height: 24rem;
+    }
+  }
+}
+
+@media (min-width: $media-l) {
+  .cart {
+    top: calc($navbar-height-l + 32px);
+    max-height: calc(100vh - (($navbar-height-l * 2) + 24px));
+  }
+}

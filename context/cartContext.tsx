@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer, Dispatch } from 'react';
+import React, { createContext, useReducer, Dispatch } from 'react';
+import contextHookGenerator from '../utils/contextHookGenerator';
 import type { Props } from '../types';
 
 type CartItem = {
@@ -94,24 +95,29 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-const CartContext = createContext<
-  { cart: CartState; dispatch: Dispatch<CartAction> } | undefined
->(undefined);
+const CartStateCtx = createContext<CartState | undefined>(undefined);
+const CartDispatchCtx = createContext<Dispatch<CartAction> | undefined>(
+  undefined
+);
 
 export function CartProvider({ children }: Props) {
-  const [cart, dispatch] = useReducer(cartReducer, initialState);
+  const [state, dispatch] = useReducer(cartReducer, initialState);
 
   return (
-    <CartContext.Provider value={{ cart, dispatch }}>
-      {children}
-    </CartContext.Provider>
+    <CartStateCtx.Provider value={state}>
+      <CartDispatchCtx.Provider value={dispatch}>
+        {children}
+      </CartDispatchCtx.Provider>
+    </CartStateCtx.Provider>
   );
 }
 
-export function useCart() {
-  const context = useContext(CartContext);
-  if (context === undefined) {
-    throw new Error('useCart must be used within CartProvider');
-  }
-  return context;
-}
+export const useCartState = contextHookGenerator(
+  CartStateCtx,
+  'useCartState must be used within CartProvider'
+);
+
+export const useCartDispatch = contextHookGenerator(
+  CartDispatchCtx,
+  'useCartDispatch must be used within CartProvider'
+);
