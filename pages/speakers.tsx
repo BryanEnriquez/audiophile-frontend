@@ -1,13 +1,13 @@
 import type { InferGetStaticPropsType } from 'next';
 import type { ProductType } from '../types';
 import ProductsCategoryPage from '../components/products-category-page';
-import { data } from '../dev-data/speakers';
+// import { data } from '../dev-data/speakers'; // DEV
 import { fetchProductsPreview } from '../utils/api';
 
 export const getStaticProps = async () => {
   const category: ProductType = 'speakers';
 
-  // const { data } = await fetchProductsPreview(category);
+  const { data } = await fetchProductsPreview(category);
 
   return {
     props: { data, category },

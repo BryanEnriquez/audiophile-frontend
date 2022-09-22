@@ -1,0 +1,13 @@
+@import '../../variables.module';
+
+.checkout {
+  margin-bottom: 97px;
+
+  @media (min-width: $media-m) {
+    margin-bottom: 116px;
+  }
+
+  @media (min-width: $media-l) {
+    margin-bottom: 141px;
+  }
+}

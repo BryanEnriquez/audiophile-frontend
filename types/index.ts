@@ -125,8 +125,6 @@ export type ProductRecommendation = {
 
 // Api response structure     ////////////////////////////////////////////////////////
 
-// NOTE total = total entries in DB that satisfy filter, not # of results returned
-
 type PaginationByPageData = {
   page: number;
   pageSize: number;
@@ -134,6 +132,7 @@ type PaginationByPageData = {
   total: number;
 };
 
+// NOTE total = total entries in DB that satisfy filter, not # of results returned
 export type PaginationByOffsetData = {
   start: number;
   limit: number;
@@ -144,12 +143,98 @@ type ApiResponseMeta = {
   pagination: PaginationByPageData | PaginationByOffsetData;
 };
 
+type ApiError = {
+  status: string;
+  name: string;
+  message: string;
+  details: any;
+};
+
 export type ApiSingleTypeResponse<T> = {
   data: T;
   meta: {};
+  error?: ApiError;
 };
 
 export type ApiCollectionTypeResponse<T> = {
   data: T[];
   meta: ApiResponseMeta;
+  error?: ApiError;
 };
+
+// Checkout       ////////////////////////////////////////////////////////
+
+type EMoneyOption = 'e-money';
+type CashOption = 'cash';
+
+export type PaymentMethod = EMoneyOption | CashOption;
+
+type BillingFields = 'name' | 'email' | 'phone';
+type ShippingFields = 'address' | 'zip' | 'city' | 'country';
+type PaymentFields = 'eMoneyNumber' | 'eMoneyPin';
+
+export type FormFields = BillingFields | ShippingFields | PaymentFields;
+
+export interface CashForm {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  zip: string;
+  city: string;
+  country: string;
+}
+
+export interface EMoneyForm extends CashForm {
+  eMoneyNumber: string;
+  eMoneyPin: string;
+}
+
+export type FormErrors = Partial<EMoneyForm>;
+
+export type CheckoutCartItem = { id: number; quantity: number };
+
+interface CheckoutForm {
+  cartItems: CheckoutCartItem[];
+}
+
+interface CheckoutRequestBodyCash extends CheckoutForm {
+  paymentMethod: CashOption;
+  paymentInfo: CashForm;
+}
+
+interface CheckoutRequestBodyEMoney extends CheckoutForm {
+  paymentMethod: EMoneyOption;
+  paymentInfo: EMoneyForm;
+}
+
+export type CheckoutRequestBody =
+  | CheckoutRequestBodyCash
+  | CheckoutRequestBodyEMoney;
+
+export type ExpectedCheckoutRequestBody =
+  | {
+      paymentMethod?: CashOption;
+      paymentInfo?: Partial<CashForm>;
+      cartItems?: Partial<CheckoutCartItem>[];
+    }
+  | {
+      paymentMethod?: EMoneyOption;
+      paymentInfo?: Partial<EMoneyForm>;
+      cartItems?: Partial<CheckoutCartItem>[];
+    };
+
+export type ProductCheckoutItem = {
+  id: number;
+  attributes: {
+    price: number;
+  };
+};
+
+export type CheckoutResponseData = {
+  grandTotal: string;
+};
+
+export type APIResponse<T> =
+  | { status: 'success'; data: T }
+  | { status: 'fail' | 'error'; message: string };

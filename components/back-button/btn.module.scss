@@ -10,6 +10,7 @@
     color: #7d7d7d;
     font-family: 'Manrope', sans-serif;
     background-color: inherit;
+    transition: 0.2s color;
   }
 }
 
@@ -23,8 +24,13 @@
   .btnBox {
     padding: 79px 0 56px 0;
 
+    &_min {
+      padding-bottom: 38px;
+    }
+
     > button:hover {
       cursor: pointer;
+      color: #d87d4a;
     }
   }
 }

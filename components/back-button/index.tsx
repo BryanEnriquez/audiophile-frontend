@@ -1,7 +1,11 @@
 import { useRouter } from 'next/router';
 import styles from './btn.module.scss';
 
-const BackButton = () => {
+type Props = {
+  min?: boolean;
+};
+
+const BackButton = ({ min = false }: Props) => {
   const router = useRouter();
 
   const onClick = () => {
@@ -18,8 +22,11 @@ const BackButton = () => {
     router.push(prevPath === currentPath ? '/' : prevPath);
   };
 
+  let cn = styles.btnBox;
+  if (min) cn += ` ${styles.btnBox_min}`;
+
   return (
-    <div className={styles.btnBox}>
+    <div className={cn}>
       <button type="button" onClick={onClick}>
         Go Back
       </button>

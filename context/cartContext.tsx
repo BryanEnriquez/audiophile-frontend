@@ -2,7 +2,7 @@ import React, { createContext, useReducer, Dispatch } from 'react';
 import contextHookGenerator from '../utils/contextHookGenerator';
 import type { Props } from '../types';
 
-type CartItem = {
+export type CartItem = {
   id: number;
   abbrev: string;
   price: number;
@@ -11,7 +11,7 @@ type CartItem = {
   slug: string;
 };
 
-type CartState = {
+export type CartState = {
   [id: string]: CartItem;
 };
 
@@ -88,7 +88,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return updateCartItemQuantity(state, id, 'SUBTRACT');
     }
     case 'RESTORE': {
-      return action.payload;
+      return { ...action.payload };
     }
     default:
       return state;

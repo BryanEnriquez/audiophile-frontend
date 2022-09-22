@@ -13,16 +13,19 @@ type BaseButton = {
 type LinkType = BaseButton & {
   type: 'link';
   href: string;
+  disabled?: undefined;
 };
 
 type ButtonType = BaseButton & {
   type: 'button';
   href?: undefined;
+  disabled?: boolean;
 };
 
 type SubmitType = BaseButton & {
   type: 'submit';
   href?: undefined;
+  disabled?: boolean;
 };
 
 type Props = LinkType | ButtonType | SubmitType;
@@ -34,6 +37,7 @@ const Button = ({
   label = 'See product',
   color = 'orange',
   onClick,
+  disabled = false,
 }: Props) => {
   const attributes: { className: string; onClick?: () => void } = {
     className: `${styles.btn} ${styles[`btn--${color}`]}${
@@ -48,7 +52,7 @@ const Button = ({
       <a {...attributes}>{label}</a>
     </Link>
   ) : (
-    <button {...attributes} type={type}>
+    <button {...attributes} type={type} disabled={disabled}>
       {label}
     </button>
   );

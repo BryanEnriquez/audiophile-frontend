@@ -42,35 +42,6 @@
     gap: 24px;
     max-height: 20rem;
     overflow-y: auto;
-
-    > li {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      grid-template-rows: auto;
-      gap: 16px;
-      align-items: center;
-
-      > img {
-        width: 64px;
-        height: 64px;
-        border-radius: 8px;
-      }
-    }
-  }
-
-  &__itemInfo {
-    > p {
-      font-weight: 700;
-      line-height: 2.5rem;
-
-      &:first-of-type {
-        font-size: 1.5rem;
-      }
-      &:last-of-type {
-        font-size: 1.4rem;
-        color: $color-gray;
-      }
-    }
   }
 
   &__total {
@@ -112,5 +83,14 @@
   .cart {
     top: calc($navbar-height-l + 32px);
     max-height: calc(100vh - (($navbar-height-l * 2) + 24px));
+
+    &__removeBtn {
+      transition: 0.2s color;
+
+      &:hover {
+        cursor: pointer;
+        color: $color-orange;
+      }
+    }
   }
 }

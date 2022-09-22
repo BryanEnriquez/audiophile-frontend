@@ -1,5 +1,6 @@
 import Button from '../button';
 import QuantityInput from '../quantity-input';
+import CartListItem from '../cart-item';
 import { useCartState, useCartDispatch } from '../../context/cartContext';
 import { toUSD } from '../../utils/toUSD';
 import styles from './cart.module.scss';
@@ -21,19 +22,14 @@ const Cart = ({ onNav }: Props) => {
     total += el.price * el.quantity;
 
     return (
-      <li key={el.id}>
-        <img src={el.cartImg} alt={el.abbrev} />
-        <div className={styles.cart__itemInfo}>
-          <p>{el.abbrev}</p>
-          <p>{toUSD(el.price)}</p>
-        </div>
+      <CartListItem key={el.id} item={el}>
         <QuantityInput
           type="reg"
           value={el.quantity}
           onDec={() => dispatch({ type: 'DECREMENT', payload: el.id })}
           onInc={() => dispatch({ type: 'INCREMENT', payload: el.id })}
         />
-      </li>
+      </CartListItem>
     );
   });
 

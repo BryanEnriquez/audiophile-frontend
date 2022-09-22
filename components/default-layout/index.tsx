@@ -3,6 +3,8 @@ import Main from '../main';
 import Footer from '../footer';
 import useNavHistory from '../../hooks/useNavHistory';
 import { CartProvider } from '../../context/cartContext';
+import { CartHasLoadedProvider } from '../../context/cartHasLoadedContext';
+import { CartPersistProvider } from '../../context/cartPersistContext';
 import { ModalRefProvider } from '../../context/modalContext';
 import type { Props } from '../../types';
 
@@ -12,9 +14,13 @@ export const DefaultLayout = ({ children }: Props) => {
   return (
     <ModalRefProvider>
       <CartProvider>
-        <Header />
-        <Main>{children}</Main>
-        <Footer />
+        <CartHasLoadedProvider>
+          <CartPersistProvider>
+            <Header />
+            <Main>{children}</Main>
+            <Footer />
+          </CartPersistProvider>
+        </CartHasLoadedProvider>
       </CartProvider>
     </ModalRefProvider>
   );

@@ -4,7 +4,7 @@ import { api } from '../utils/api';
 import Hero from '../components/hero';
 import ContentSidePadding from '../components/content-side-padding';
 import HomeFeatured from '../components/home-featured';
-import { homepage } from '../dev-data/homepage'; // local testing
+// import { homepage } from '../dev-data/homepage'; // DEV
 import SharedContent from '../components/shared-content';
 import HomeWrapper from '../components/home-wrapper';
 import type { ApiSingleTypeResponse, Homepage } from '../types';
@@ -47,12 +47,12 @@ function populateProducts(...products: string[]) {
 }
 
 export const getStaticProps = async () => {
-  // const { data }: ApiSingleTypeResponse<Homepage> = await api('homepage', {
-  //   fields: ['about'],
-  //   populate: populateProducts('hero', 'featured1', 'featured2', 'featured3'),
-  // });
+  const { data }: ApiSingleTypeResponse<Homepage> = await api('homepage', {
+    fields: ['about'],
+    populate: populateProducts('hero', 'featured1', 'featured2', 'featured3'),
+  });
 
-  // const homepage = data.attributes;
+  const homepage = data.attributes;
 
   const homeData = {
     about: homepage.about,

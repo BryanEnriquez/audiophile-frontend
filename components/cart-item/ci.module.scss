@@ -1,0 +1,43 @@
+@import '../../styles/variables.module';
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto;
+  gap: 16px;
+  align-items: center;
+
+  &__img {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+
+    &_min {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__info {
+    > p {
+      font-weight: 700;
+      line-height: 2.5rem;
+
+      &:first-of-type {
+        font-size: 1.5rem;
+      }
+      &:last-of-type {
+        font-size: 1.4rem;
+        color: $color-gray;
+      }
+    }
+  }
+
+  &__quantity {
+    padding-bottom: 2.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    color: $color-gray;
+  }
+}
