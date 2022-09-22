@@ -43,13 +43,15 @@
     }
 
     > p {
+      font-weight: 500;
       font-size: 1.5rem;
       line-height: 2.5rem;
-      color: #7d7d7d;
+      opacity: 0.5;
     }
   }
 
   &__new {
+    font-weight: 400;
     font-size: 1.4rem;
     line-height: 1.9rem;
     letter-spacing: 10px;

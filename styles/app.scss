@@ -2,7 +2,23 @@
 
 @font-face {
   font-family: 'Manrope';
-  src: url('../public/font/ManropeV.woff2') format('woff2');
+  src: url(../public/font/Manrope-Regular.woff2);
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url(../public/font/Manrope-Medium.woff2);
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url(../public/font/Manrope-Bold.woff2);
+  font-style: normal;
+  font-weight: 700;
 }
 
 *,

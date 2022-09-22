@@ -8,6 +8,7 @@
   overflow: hidden;
 
   > div > h2 {
+    font-weight: 700;
     font-size: 2.4rem;
     line-height: 3.6rem;
     letter-spacing: 0.857px;
@@ -16,9 +17,10 @@
 
   &__features {
     & > p {
+      font-weight: 500;
       font-size: 1.5rem;
       line-height: 2.5rem;
-      color: #7d7d7d;
+      opacity: 0.5;
 
       &:first-of-type {
         margin-bottom: 25px;
@@ -36,14 +38,18 @@
       display: grid;
       grid-template-columns: auto 1fr;
       grid-template-rows: auto;
+      font-weight: 500;
       font-size: 1.5rem;
       line-height: 2.5rem;
-      color: #7d7d7d;
 
-      > span {
+      > span:first-of-type {
         min-width: 39px;
         font-weight: 700;
         color: #d87d4a;
+      }
+
+      > span:last-of-type {
+        opacity: 0.5;
       }
     }
   }

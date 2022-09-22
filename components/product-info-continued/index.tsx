@@ -19,7 +19,7 @@ const ProductInfoContinued = ({ features, included }: Props) => (
       <ul className={styles.info2__list}>
         {included.map((el, i) => (
           <li key={i}>
-            <span>{`${el.quantity}x`}</span> {el.item}
+            <span>{`${el.quantity}x`}</span> <span>{el.item}</span>
           </li>
         ))}
       </ul>
