@@ -4,13 +4,14 @@
   padding: 16px 0 24px 0;
 
   > button {
+    font-weight: 500;
     font-size: 1.5rem;
     line-height: 2.5rem;
     border-width: 0;
-    color: #7d7d7d;
+    opacity: 0.5;
     font-family: 'Manrope', sans-serif;
     background-color: inherit;
-    transition: 0.2s color;
+    transition: 0.1s color, 0.1s opacity;
   }
 }
 
@@ -31,6 +32,7 @@
     > button:hover {
       cursor: pointer;
       color: #d87d4a;
+      opacity: 1;
     }
   }
 }

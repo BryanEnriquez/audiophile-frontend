@@ -16,6 +16,7 @@
   }
 
   h2 {
+    font-weight: 700;
     text-transform: uppercase;
   }
 
@@ -31,7 +32,7 @@
     grid-template-rows: auto auto;
     gap: 32px;
     justify-items: center;
-    color: #ffffff;
+    color: #fff;
     background-color: #d87d4a;
     border-radius: 8px;
     overflow: hidden;
@@ -113,10 +114,9 @@
       text-align: left;
     }
 
-    h2 {
+    > h2 {
       max-width: 21rem;
       font-size: 3.6rem;
-      font-weight: 700;
       line-height: 4rem;
       letter-spacing: 1.285px;
 
@@ -128,7 +128,8 @@
       }
     }
 
-    p {
+    > p {
+      font-weight: 500;
       font-size: 1.5rem;
       line-height: 2.5rem;
       opacity: 0.75;
@@ -183,7 +184,6 @@
 
     > h2 {
       margin-bottom: 32px;
-      font-weight: 700;
       font-size: 2.8rem;
       line-height: 3.8rem;
       letter-spacing: 2px;
@@ -251,13 +251,12 @@
       padding: 24px 95px;
     }
 
-    h2 {
+    > h2 {
       margin-bottom: 32px;
-      font-weight: 700;
       font-size: 2.8rem;
       line-height: 3.8rem;
       letter-spacing: 2px;
-      color: #000000;
+      color: #000;
     }
   }
 }

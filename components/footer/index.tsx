@@ -10,27 +10,25 @@ const footerCopy = {
   copyright: 'Copyright 2021. All Rights Reserved',
 };
 
-const Footer = () => {
-  return (
-    <footer className={styles.footer}>
-      <MaxWidthWrapper>
-        <div className={styles.footer__highlight} />
-      </MaxWidthWrapper>
-      <MaxWidthWrapper>
-        <div className={styles.footer__links}>
-          <Logo />
-          <NavLinks type="footer" />
+const Footer = () => (
+  <footer className={styles.footer}>
+    <MaxWidthWrapper>
+      <div className={styles.footer__highlight} />
+    </MaxWidthWrapper>
+    <MaxWidthWrapper>
+      <div className={styles.footer__links}>
+        <Logo />
+        <NavLinks type="footer" />
+      </div>
+      <div className={styles.footer__copy}>
+        <p className={styles.footer__about}>{footerCopy.about}</p>
+        <p className={styles.footer__copyright}>{footerCopy.copyright}</p>
+        <div className={styles.footer__socialsWrapper}>
+          <Socials />
         </div>
-        <div className={styles.footer__copy}>
-          <p className={styles.footer__about}>{footerCopy.about}</p>
-          <p className={styles.footer__copyright}>{footerCopy.copyright}</p>
-          <div className={styles['footer__socials-wrapper']}>
-            <Socials />
-          </div>
-        </div>
-      </MaxWidthWrapper>
-    </footer>
-  );
-};
+      </div>
+    </MaxWidthWrapper>
+  </footer>
+);
 
 export default Footer;

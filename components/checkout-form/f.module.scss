@@ -13,10 +13,11 @@
   }
 
   &__msg {
+    font-weight: 500;
     padding-top: 24px;
     font-size: 1.5rem;
     line-height: 2.5rem;
-    color: $color-gray;
+    opacity: 0.5;
   }
 }
 
@@ -224,7 +225,8 @@
       font-weight: 500;
       font-size: 1.5rem;
       line-height: 2.5rem;
-      color: $color-gray;
+      color: #000;
+      opacity: 0.5;
     }
   }
 
@@ -234,7 +236,7 @@
     background-color: #fff;
     border-radius: 8px;
 
-    h2 {
+    > h2 {
       font-weight: 700;
       font-size: 1.8rem;
       line-height: 2.5rem;
@@ -264,23 +266,24 @@
     > p {
       display: flex;
       justify-content: space-between;
-      font-weight: 500;
-      font-size: 1.5rem;
+      font-weight: 700;
+      font-size: 1.8rem;
       line-height: 2.5rem;
       text-transform: uppercase;
-      color: $color-gray;
+      color: #000;
 
       > span {
-        font-weight: 700;
-        font-size: 1.8rem;
-        color: #000;
+        font-weight: 500;
+        font-size: 1.5rem;
+        opacity: 0.5;
       }
 
       &:last-of-type {
+        color: #d87d4a;
         margin-top: 24px;
 
         > span {
-          color: #d87d4a;
+          color: #000;
         }
       }
     }

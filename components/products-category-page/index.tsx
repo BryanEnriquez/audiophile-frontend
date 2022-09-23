@@ -13,22 +13,20 @@ type Props = {
 };
 
 const ProductsCategoryPage = ({ category, data }: Props) => (
-  <>
+  <ContentWrapper>
     <Head>
       <title>
         {`Audiophile - ${category[0].toUpperCase() + category.slice(1)}`}
       </title>
     </Head>
-    <ContentWrapper>
-      <CategoryBlock heading={category} />
-      <ContentSidePadding>
-        <MaxWidthWrapper>
-          <ProductsList products={data} />
-        </MaxWidthWrapper>
-        <SharedContent type="b" />
-      </ContentSidePadding>
-    </ContentWrapper>
-  </>
+    <CategoryBlock heading={category} />
+    <ContentSidePadding>
+      <MaxWidthWrapper>
+        <ProductsList products={data} />
+      </MaxWidthWrapper>
+      <SharedContent type="b" />
+    </ContentSidePadding>
+  </ContentWrapper>
 );
 
 export default ProductsCategoryPage;

@@ -13,7 +13,7 @@ const NavLinks = ({ type = 'header', onNav }: Props) => {
   if (onNav) props.onClick = onNav;
 
   return (
-    <ul className={`${styles['nav-links']} ${styles[`nav-links--${type}`]}`}>
+    <ol className={`${styles['nav-links']} ${styles[`nav-links--${type}`]}`}>
       {navLinks.map(({ label, href }) => (
         <li key={label}>
           <Link href={href}>
@@ -21,7 +21,7 @@ const NavLinks = ({ type = 'header', onNav }: Props) => {
           </Link>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 };
 

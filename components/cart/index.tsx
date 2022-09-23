@@ -45,8 +45,7 @@ const Cart = ({ onNav }: Props) => {
       </button>
       <ul className={styles.cart__items}>{renderedListItems}</ul>
       <p className={styles.cart__total}>
-        TOTAL
-        <span>{toUSD(total)}</span>
+        <span>TOTAL</span> {toUSD(total)}
       </p>
       <Button type="link" href="/checkout" onClick={onNav} label="Checkout" />
     </div>

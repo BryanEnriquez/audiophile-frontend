@@ -308,7 +308,7 @@ const CheckoutForm = () => {
           {[toUSD(total), toUSD(shipping), toUSD(vat), toUSD(grandTotal)].map(
             (val, i) => (
               <p key={i}>
-                {summaryLabels[i]} <span>{val}</span>
+                <span>{summaryLabels[i]}</span> {val}
               </p>
             )
           )}

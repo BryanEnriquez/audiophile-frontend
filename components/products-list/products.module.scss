@@ -7,16 +7,7 @@
   grid-auto-rows: auto;
   gap: 120px;
 
-  @media (min-width: $media-m) {
-    padding: 120px 0;
-  }
-
-  @media (min-width: $media-l) {
-    padding: 160px 0;
-    gap: 160px;
-  }
-
-  li {
+  > li {
     position: relative;
   }
 
@@ -25,19 +16,106 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     gap: 32px;
+  }
 
-    @media (min-width: $media-m) {
+  &__img {
+    position: relative;
+    padding-top: 107.65%;
+    border-radius: 8px;
+    overflow: hidden;
+
+    > picture > img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__copy {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 24px;
+    justify-items: center;
+    text-align: center;
+
+    > span {
+      display: block;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+      letter-spacing: 10px;
+      padding-left: 10px;
+      color: #d87d4a;
+    }
+
+    > h2 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      line-height: 3.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      max-width: 22rem;
+      overflow-wrap: break-word;
+    }
+
+    > p {
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+      opacity: 0.5;
+    }
+  }
+}
+
+@media (min-width: $media-m) {
+  .products {
+    padding: 120px 0;
+
+    &__grid {
       gap: 52px;
     }
 
-    @media (min-width: $media-l) {
+    &__img {
+      padding-top: 51.09%; // 352/689
+      background-color: #f1f1f1;
+      // or constant height
+      // padding-top: 0;
+      // height: 352px;
+    }
+
+    &__copy {
+      gap: 16px;
+
+      > h2 {
+        font-size: 4rem;
+        line-height: 4.4rem;
+        letter-spacing: 1.428px;
+        max-width: 29rem;
+      }
+
+      > p {
+        padding: 16px 0 8px 0;
+        max-width: 56.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: $media-l) {
+  .products {
+    padding: 160px 0;
+    gap: 160px;
+
+    &__grid {
       min-height: 560px;
       grid-template-rows: 1fr;
       gap: 60px;
     }
-  }
 
-  @media (min-width: $media-l) {
     & > li {
       &:nth-of-type(odd) {
         & > .products__grid {
@@ -61,97 +139,23 @@
         }
       }
     }
-  }
 
-  &__img {
-    position: relative;
-    padding-top: 107.65%;
-    border-radius: 8px;
-    overflow: hidden;
-
-    @media (min-width: $media-m) {
-      padding-top: 51.09%; // 352/689
-      // or constant height
-      // padding-top: 0;
-      // height: 352px;
-      // background-color: #f1f1f1;
-    }
-
-    @media (min-width: $media-l) {
+    &__img {
       padding-top: 0;
     }
-  }
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
-    width: auto;
-  }
-
-  &__copy {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    gap: 24px;
-    justify-items: center;
-    text-align: center;
-
-    @media (min-width: $media-m) {
-      gap: 16px;
-    }
-
-    @media (min-width: $media-l) {
+    &__copy {
       align-self: center;
 
       justify-items: start;
       text-align: left;
       max-width: 43.7rem;
-    }
 
-    span {
-      display: block;
-      font-size: 1.4rem;
-      line-height: 1.9rem;
-      letter-spacing: 10px;
-      padding-left: 10px;
-      color: #d87d4a;
-
-      @media (min-width: $media-l) {
+      > span {
         padding-left: 0;
       }
-    }
 
-    h2 {
-      font-weight: 700;
-      font-size: 2.8rem;
-      line-height: 3.8rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      max-width: 22rem;
-      overflow-wrap: break-word;
-
-      @media (min-width: $media-m) {
-        font-size: 4rem;
-        line-height: 4.4rem;
-        letter-spacing: 1.428px;
-        max-width: 29rem;
-      }
-    }
-
-    p {
-      font-size: 1.5rem;
-      line-height: 2.5rem;
-      color: #7d7d7d;
-
-      @media (min-width: $media-m) {
-        padding: 16px 0 8px 0;
-        max-width: 56.5rem;
-      }
-
-      @media (min-width: $media-l) {
+      > p {
         padding-bottom: 24px;
       }
     }

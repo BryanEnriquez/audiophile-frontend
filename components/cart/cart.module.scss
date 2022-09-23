@@ -30,7 +30,8 @@
     border: none;
     text-decoration: underline;
     font-family: 'Manrope', sans-serif;
-    color: $color-gray;
+    opacity: 0.5;
+    color: #000;
     background-color: inherit;
   }
 
@@ -48,17 +49,15 @@
     margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-weight: 500;
-    font-size: 1.5rem;
+    font-weight: 700;
+    font-size: 1.8rem;
     line-height: 2.5rem;
-    color: $color-gray;
+    color: #000;
 
     > span {
-      font-weight: 700;
-      font-size: 1.8rem;
-      line-height: 2.5rem;
-      color: #000;
+      font-weight: 500;
+      font-size: 1.5rem;
+      opacity: 0.5;
     }
   }
 }

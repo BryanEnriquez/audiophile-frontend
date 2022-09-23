@@ -85,13 +85,13 @@
     flex-direction: column;
     align-items: center;
     z-index: 11;
+    font-weight: 700;
+    color: #000;
 
     p:first-of-type {
-      font-weight: 700;
       font-size: 1.5rem;
       line-height: 2rem;
       letter-spacing: 1.071px;
-      color: #000000;
 
       @media (min-width: $media-l) {
         font-size: 1.8rem;
@@ -119,14 +119,12 @@
       }
     }
 
-    span {
+    > p > span {
       padding-right: 13px;
-      font-weight: 700;
       font-size: 1.3rem;
       line-height: 1.8rem;
       letter-spacing: 1px;
-      color: #000000;
-      opacity: 0.6;
+      opacity: 0.5;
       transition: color 0.2s, opacity 0.2s;
     }
   }

@@ -11,11 +11,13 @@ const Hero = ({ product }: Props) => {
   return (
     <div className={styles.hero}>
       <div className={styles.hero__imgBox}>
-        <ProductPicture
-          images={product.images}
-          altText={product.heading}
-          loading="eager"
-        />
+        <div className={styles.hero__img}>
+          <ProductPicture
+            images={product.images}
+            altText={product.heading}
+            loading="eager"
+          />
+        </div>
       </div>
       <div className={styles.hero__textBox}>
         {isNew && <span>NEW PRODUCT</span>}

@@ -6,29 +6,22 @@
   overflow: hidden;
 
   &__imgBox {
-    position: relative;
-    max-width: 375px;
-    min-height: 510px;
     margin: 0 auto;
+    max-width: 500px;
     z-index: 1;
-
-    @media (min-width: $media-m) {
-      max-width: 768px;
-      min-height: 639px;
-    }
-
-    @media (min-width: $media-l) {
-      max-width: 1440px;
-      min-height: 632px;
-    }
   }
 
-  img {
-    display: block;
-    max-width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  &__img {
+    position: relative;
+    padding-top: 136%; // 375:510
+
+    > picture > img {
+      position: absolute;
+      display: block;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
   }
 
   &__textBox {
@@ -39,31 +32,20 @@
     max-width: 37.6rem;
     z-index: 10;
     transform: translate(-50%, calc(-50% - 2px));
+    color: #fff;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    @media (min-width: $media-m) {
-      // max-width: 39.6rem;
-      max-width: 40rem;
-      transform: translate(-50%, calc(-50% - 20px));
-    }
-
-    @media (min-width: $media-l) {
-      width: calc(100vw - 80px);
-      max-width: $max-width-l;
-      transform: translate(-50%, calc(-50% - 15px));
-      align-items: flex-start;
-    }
-
-    span {
+    > span {
       display: block;
+      font-weight: 400;
       font-size: 1.4rem;
       line-height: 1.9rem;
       letter-spacing: 10px;
+      padding-left: 10px;
       text-align: center;
-      color: #ffffff;
       opacity: 0.5;
     }
 
@@ -74,45 +56,87 @@
       line-height: 4rem;
       text-transform: uppercase;
       letter-spacing: 1.285px;
-      color: #ffffff;
       text-align: center;
+    }
 
-      @media (min-width: $media-m) {
+    > p {
+      margin-bottom: 28px;
+      max-width: 32.8rem;
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 2.5rem;
+      text-align: center;
+      opacity: 0.75;
+    }
+
+    & > div {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: $media-m) {
+  .hero {
+    &__imgBox {
+      max-width: 900px;
+    }
+
+    &__img {
+      padding-top: 83.2%; // 768:639
+    }
+
+    &__textBox {
+      max-width: 40rem;
+      transform: translate(-50%, calc(-50% - 20px));
+
+      h1 {
         margin: 24px 0;
         font-size: 5.6rem;
         line-height: 5.8rem;
         letter-spacing: 2px;
       }
 
-      @media (min-width: $media-l) {
-        max-width: 39.6rem;
-        text-align: left;
-      }
-    }
-
-    p {
-      margin-bottom: 28px;
-      max-width: 32.8rem;
-      font-size: 1.5rem;
-      font-weight: 500;
-      line-height: 2.5rem;
-      color: #ffffff;
-      text-align: center;
-      opacity: 0.75;
-
-      @media (min-width: $media-m) {
+      > p {
         margin-bottom: 40px;
         max-width: 34.9rem;
       }
+    }
+  }
+}
 
-      @media (min-width: $media-l) {
-        text-align: left;
-      }
+@media (min-width: $media-l) {
+  .hero {
+    &__imgBox {
+      max-width: 1440px;
+      min-height: 630px;
+      display: flex;
+      align-items: center;
     }
 
-    & > div {
-      display: flex;
-      justify-content: center;
+    &__img {
+      width: 100%;
+      padding-top: 43.88%; // 1440:632
+    }
+
+    &__textBox {
+      width: calc(100vw - 80px);
+      max-width: $max-width-l;
+      transform: translate(-50%, calc(-50% - 15px));
+      align-items: flex-start;
+
+      > span {
+        padding-left: 0;
+      }
+
+      h1 {
+        max-width: 39.6rem;
+        text-align: left;
+      }
+
+      > p {
+        text-align: left;
+      }
     }
   }
 }
