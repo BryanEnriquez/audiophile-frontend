@@ -84,7 +84,7 @@
     max-height: calc(100vh - (($navbar-height-l * 2) + 24px));
 
     &__removeBtn {
-      transition: 0.2s color;
+      transition: color 0.2s;
 
       &:hover {
         cursor: pointer;

@@ -376,7 +376,7 @@
     }
 
     &__inputRadio {
-      transition: 0.1s border-color;
+      transition: border-color 0.1s;
 
       &:hover {
         cursor: pointer;
@@ -390,7 +390,7 @@
 
     &__inputText {
       > input {
-        transition: 0.1s border-color;
+        transition: border-color 0.1s;
 
         &:hover {
           border-color: #d87d4a;
